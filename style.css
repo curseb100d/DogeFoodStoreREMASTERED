@@ -1,0 +1,84 @@
+* {
+    font-family: 'Arial';
+    margin: 0;
+}
+
+body {
+    background-color: var(--main-color);
+}
+
+:root {
+    --main-color: #f7e8b1;
+    --line-color: #473c38;
+    --other-color: #b2935b;
+}
+
+/* Top Navigation */
+.topnav {
+    background-color: var(--other-color);
+    position: relative;
+    overflow: hidden;
+    border-radius: 50px;
+    margin: 10px;
+}
+
+/* Left Aligned Logo */
+.topnav img {
+    float: left;
+    height: 50px;
+    width: 50px;
+    padding: 5px;
+}
+
+/* Left Aligned Links */
+.topnav a {
+    float: left;
+    padding: 20px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    color: black;
+}
+
+.topnav a:hover {
+    background-color: var(--line-color);
+    color: white;
+}
+
+.topnav a.active {
+    background-color: var(--line-color);
+    color: white;
+}
+
+/* Centered Search */
+.topnav .search-container  {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.topnav input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+    border-radius: 10px 0px 0px 10px;
+}
+
+.topnav .search-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: var(--main-color);
+    font-size: 17px;
+    border: none;
+    border-radius: 0px 10px 10px 0px;
+    cursor: pointer;
+}
+
+/* Right Aligned Links */
+.topnav-right {
+    float: right;
+}
