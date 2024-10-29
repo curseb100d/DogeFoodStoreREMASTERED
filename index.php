@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Cloudflare -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Link to CSS -->
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
+
 <body>
     <!-- Top Navigation -->
-     <div class="topnav">
-        <!-- Left Aligned Logo -->
+    <div class="topnav">
+            
         <div>
             <img src="images/dogecoin11transparent.png">
-        </div>
-        <!-- Left Aligned Links -->
-        <div>
             <a href="#home" class="active">Home</a>
             <a href="#about">About</a>
             <a href="#services">Services</a>
@@ -35,7 +34,9 @@
         <!-- Right Aligned Links -->
         <div class="topnav-right">
             <a href="#Login">Login</a>
+            <button type="submit"><i class="fa fa-shopping-cart"></i></button>
         </div>
-     </div>
+    </div>
 </body>
+
 </html>

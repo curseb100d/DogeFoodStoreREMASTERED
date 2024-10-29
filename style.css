@@ -18,11 +18,12 @@ body {
     background-color: var(--other-color);
     position: relative;
     overflow: hidden;
+    border: 3px solid var(--line-color);
     border-radius: 50px;
     margin: 10px;
 }
 
-/* Left Aligned Logo */
+/* Left Aligned Links */
 .topnav img {
     float: left;
     height: 50px;
@@ -30,7 +31,6 @@ body {
     padding: 5px;
 }
 
-/* Left Aligned Links */
 .topnav a {
     float: left;
     padding: 20px 16px;
@@ -81,4 +81,13 @@ body {
 /* Right Aligned Links */
 .topnav-right {
     float: right;
+}
+
+.topnav-right button {
+    float: right;
+    margin-top: 21px;
+    margin-right: 10px;
+    border: none;
+    background-color: var(--other-color);
+    cursor: pointer;
 }
