@@ -8,35 +8,13 @@
     <!-- Cloudflare -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Link to CSS -->
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="dogestyle.css">
+    <title>Doge Dog Store</title>
 </head>
 
 <body>
-    <!-- Top Navigation -->
-    <div class="topnav">
-            
-        <div>
-            <img src="images/dogecoin11transparent.png">
-            <a href="#home" class="active">Home</a>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-        </div>
-
-        <!-- Centered Search -->
-        <div class="search-container">
-            <form action="">
-                <input type="text" placeholder="Search Doge Dog Food" name="search">
-                <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
-        </div>
-
-        <!-- Right Aligned Links -->
-        <div class="topnav-right">
-            <a href="#Login">Login</a>
-            <button type="submit"><i class="fa fa-shopping-cart"></i></button>
-        </div>
-    </div>
+    <!-- Doge Top Navigation -->
+    <?php include 'includes/dogetopnavigation.php'; ?>
 </body>
 
 </html>
