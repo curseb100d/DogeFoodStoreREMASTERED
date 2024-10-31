@@ -15,6 +15,13 @@
 <body>
     <!-- Doge Top Navigation -->
     <?php include 'includes/dogetopnavigation.php'; ?>
+
+    <!-- Slideshow -->
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <div class="numbertext">
+        </div>
+    </div>
 </body>
 
 </html>
