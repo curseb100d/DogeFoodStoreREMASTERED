@@ -14,14 +14,35 @@
 
 <body>
     <!-- Doge Top Navigation -->
-    <?php include 'includes/dogetopnavigation.php'; ?>
+    <?php include 'includes/client_dogetopnavigation.php'; ?>
 
     <!-- Slideshow -->
     <div class="slideshow-container">
         <div class="mySlides fade">
-            <div class="numbertext">
+            <img src="images/doge.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <img src="images/cheems.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <img src="" style="width:100%">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+
+        <div style="text-align: center;">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
         </div>
     </div>
+
+
+    <!-- Link to JavaScript -->
+    <script src="script.js"></script>
 </body>
 
 </html>

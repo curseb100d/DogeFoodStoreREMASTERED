@@ -82,7 +82,7 @@ if (isset($_POST['submit'])) {
 <body>
 
     <!-- Doge Top Navigation -->
-    <?php include '../includes/dogetopnavigation.php' ?>
+    <?php include '../includes/admin_dogetopnavigation.php' ?>
 
     <div class="row">
         <!-- Doge Forms -->
