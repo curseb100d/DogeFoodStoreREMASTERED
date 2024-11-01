@@ -2,6 +2,7 @@
 
 include '../doge_config.php';
 
+// Add Doge Product
 $dogeproduct = 0;
 $dogeimage = 0;
 
@@ -22,7 +23,10 @@ if (isset($_POST['submit'])) {
 
     try {
         // If doge product already exist
-        $select_dogeproducts = $pdo->prepare("SELECT * FROM `dogeproducts` WHERE brand = ?");
+        // MySQL
+        // $select_dogeproducts = $pdo->prepare("SELECT * FROM `dogeproducts` WHERE brand = ?");
+        // PostgreSQL
+        $select_dogeproducts = $pdo->prepare("SELECT * FROM dogeproducts WHERE brand = ?");
         $select_dogeproducts -> execute([$brand]);
 
         if($select_dogeproducts -> rowCount() > 0) {
@@ -40,7 +44,10 @@ if (isset($_POST['submit'])) {
                     // Product and Image will be uploaded to database
                     move_uploaded_file($imagefiletemp, $upload_image);
 
-                    $sql = "INSERT INTO `dogeproducts` (brand, flavor, price, category, image) VALUES (:brand, :flavor, :price, :category, :image)";
+                    // MySQL
+                    // $sql = "INSERT INTO `dogeproducts` (brand, flavor, price, category, image) VALUES (:brand, :flavor, :price, :category, :image)";
+                    // PostgreSQL
+                    $sql = "INSERT INTO dogeproducts (brand, flavor, price, category, image) VALUES (:brand, :flavor, :price, :category, :image)";
     
                     // Prepare the statement
                     $stmt = $pdo->prepare($sql);
@@ -63,6 +70,31 @@ if (isset($_POST['submit'])) {
     }
 }
 
+// Delete a Doge Product
+if(isset($_GET['deleteid'])){
+    $id = $_GET['deleteid'];
+
+    try {
+        // Delete images from local
+        // $delete_dogeproduct_image = $pdo->prepare("SELECT * FROM dogeproducts WHERE id = ?");
+        // $delete_dogeproduct_image->execute([$id]);
+        // $fetch_delete_image = $delete_dogeproduct_image->fetch(PDO::FETCH_ASSOC);
+        // unlink('../image_upload/'.$fetch_delete_image['file']);
+
+        // Prepare the SQL DELETE query with a placeholder
+        $sql = "DELETE FROM dogeproducts WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+
+        // Bind the ID parameter to the placeholder
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+        // Execute the Query
+        $stmt->execute();
+    } catch (PDOException $e) {
+        // Handle any errors that occur during the election
+        die("Error: " . $e->getMessage());
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -90,16 +122,20 @@ if (isset($_POST['submit'])) {
             <form action="" method="POST" enctype="multipart/form-data">
                 <label>Brand</label>
                 <input type="text" required name="brand">
+
                 <label>Flavor</label>
                 <input type="text" required name="flavor">
+
                 <label>Price</label>
                 <input type="number" required name="price" onkeypress="if(this.value.length == 10) return false;">
+                
                 <label>Category</label>
                 <select name="category" required>
                     <option value="" disabled selected>Select Category --</option>
                     <option value="Dog Food">Dog Food</option>
                     <option value="Dog Accessory">Dog Accessory</option>
                 </select>
+                
                 <input type="file" name="file" required>
                 <input type="submit" name="submit">
             </form>
@@ -117,7 +153,10 @@ if (isset($_POST['submit'])) {
                 </tr>
                 <?php
                     // Fetch data from database
-                    $sql = "SELECT * FROM `dogeproducts`";
+                    // MySQL
+                    // $sql = "SELECT * FROM `dogeproducts`";
+                    // PostgreSQL
+                    $sql = "SELECT * FROM dogeproducts";
                     $stmt = $pdo -> query($sql);
 
                     while($row = $stmt -> fetch(PDO::FETCH_ASSOC)) {
@@ -136,6 +175,10 @@ if (isset($_POST['submit'])) {
                                 <td>'.$price.'</td>
                                 <td>'.$category.'</td>
                                 <td><img src='.$image.' style="width: 100px;"/></td>
+                                <td>
+                                    <button><a href="doge_products.php?updateid='.$id.'">Update</a></button>
+                                    <button><a href="doge_products.php?deleteid='.$id.'">Delete</a></button>
+                                </td>
                             </tr>';
                     }
                 ?>
@@ -143,5 +186,4 @@ if (isset($_POST['submit'])) {
         </div>
     </div>
 </body>
-
 </html>
