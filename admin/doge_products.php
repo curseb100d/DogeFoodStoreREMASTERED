@@ -76,10 +76,15 @@ if(isset($_GET['deleteid'])){
 
     try {
         // Delete images from local
-        // $delete_dogeproduct_image = $pdo->prepare("SELECT * FROM dogeproducts WHERE id = ?");
-        // $delete_dogeproduct_image->execute([$id]);
-        // $fetch_delete_image = $delete_dogeproduct_image->fetch(PDO::FETCH_ASSOC);
-        // unlink('../image_upload/'.$fetch_delete_image['file']);
+        $delete_dogeproduct_image = $pdo->prepare("SELECT * FROM dogeproducts WHERE id = ?");
+        $delete_dogeproduct_image->execute([$id]);
+        $fetch_delete_image = $delete_dogeproduct_image->fetch(PDO::FETCH_ASSOC);
+        unlink('../image_upload/'.$fetch_delete_image['image']);
+
+        // Alternative
+        // if ($fetch_delete_image && !empty($fetch_delete_image['image'])) {
+        //     unlink('../image_upload/' . $fetch_delete_image['image']);
+        // }
 
         // Prepare the SQL DELETE query with a placeholder
         $sql = "DELETE FROM dogeproducts WHERE id = :id";
@@ -176,7 +181,7 @@ if(isset($_GET['deleteid'])){
                                 <td>'.$category.'</td>
                                 <td><img src='.$image.' style="width: 100px;"/></td>
                                 <td>
-                                    <button><a href="doge_products.php?updateid='.$id.'">Update</a></button>
+                                    <button><a href="doge_products_update.php?updateid='.$id.'">Update</a></button>
                                     <button><a href="doge_products.php?deleteid='.$id.'">Delete</a></button>
                                 </td>
                             </tr>';

@@ -19,7 +19,7 @@ try {
     $flavor = $row['flavor'];
     $price = $row['price'];
     $category = $row['category'];
-    $image = $row['file'];
+    $image = $row['image'];
 
 } catch (PDOException $e) {
     die("Error: " . $e->getMessage());
@@ -38,23 +38,36 @@ if (isset($_POST['submit'])) {
     $filename_separate = explode('.', $imagefilename);
     $file_extension = strtolower(end($filename_separate));
 
-    $allowed_extensions = array('jpeg,', 'jpg', 'png');    
+    $allowed_extensions = array('jpeg,', 'jpg', 'png');
 
     try {
-        // Prepare the SQL statement to update the data 
-        $sql = "UPDATE dogeproducts SET brand = :brand, flavor = :flavor, price = :price, category = :category WHERE id = :id";
-        $stmt = $pdo->prepare($sql);
-    
-        // Bind parameters to the SQL statement
-        $stmt->bindParam(':brand', $brand);
-        $stmt->bindParam(':flavor', $flavor);
-        $stmt->bindParam(':price', $price);
-        $stmt->bindParam(':brand', $brand);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        if (in_array($file_extension, $allowed_extensions)) {
+            // If the image already exist
+            $upload_image = '../image_upload/' . $imagefilename;
 
-        // Execute the update query
-        $stmt->execute();
-    } catch(PDOException $e) {
+            if ($upload_image > 2000000) {
+                // $message[] = 'Woof! The image is too big';
+                $dogeimage = 1;
+            } else {
+                // Product and Image will be uploaded to database
+                move_uploaded_file($imagefiletemp, $upload_image);
+
+                // Prepare the SQL statement to update the data 
+                $sql = "UPDATE dogeproducts SET brand = :brand, flavor = :flavor, price = :price, category = :category WHERE id = :id";
+                $stmt = $pdo->prepare($sql);
+
+                // Bind parameters to the SQL statement
+                $stmt->bindParam(':brand', $brand);
+                $stmt->bindParam(':flavor', $flavor);
+                $stmt->bindParam(':price', $price);
+                $stmt->bindParam(':brand', $category);
+                $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+                // Execute the update query
+                $stmt->execute();
+            }
+        }
+    } catch (PDOException $e) {
         die("Error: " . $e->getMessage());
     }
 }
@@ -83,20 +96,22 @@ if (isset($_POST['submit'])) {
         <!-- Doge Forms -->
         <div class="column" id="forms">
             <form action="" method="POST" enctype="multipart/form-data">
+                <img src="../image_upload/<?php echo $image; ?>" style="width: 100px;">
+
                 <label>Brand</label>
-                <input type="text" required name="brand">
+                <input type=" text" required name="brand" value="<?php echo $brand; ?>">
 
                 <label>Flavor</label>
-                <input type="text" required name="flavor">
+                <input type="text" required name="flavor" value="<?php echo $flavor; ?>">
 
                 <label>Price</label>
-                <input type="number" required name="price" onkeypress="if(this.value.length == 10) return false;">
-                
+                <input type="number" required name="price" value="<?php echo $price; ?>" onkeypress="if(this.value.length == 10) return false;">
+
                 <label>Category</label>
                 <select name="category" required>
                     <option value="" disabled selected>Select Category --</option>
-                    <option value="Dog Food">Dog Food</option>
-                    <option value="Dog Accessory">Dog Accessory</option>
+                    <option value="Dog Food" <?php echo ($category === 'Dog Food') ? 'selected' : ''; ?>>Dog Food</option>
+                    <option value="Dog Accessory" <?php echo ($category === 'Dog Accessory') ? 'selected' : ''; ?>>Dog Accessory</option>
                 </select>
                 <input type="file" name="file" required>
                 <input type="submit" name="submit">
