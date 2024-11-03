@@ -3,11 +3,11 @@
 include '../doge_config.php';
 
 // Update a doge product
-// Get data from database from ID to display
+// Fetch data from database
 $id = $_GET['updateid'];
 
 try {
-    // Prepare the SQL statement to fetch the dasta by ID
+    // Prepare the SQL statement to fetch the data by ID
     $sql = "SELECT * FROM dogeproducts WHERE id = :id";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -30,47 +30,26 @@ if (isset($_POST['submit'])) {
     $flavor = $_POST['flavor'];
     $price = $_POST['price'];
     $category = $_POST['category'];
-    $image = $_FILES['file'];
-
-    $imagefilename = $image['name'];
-    $imagefiletemp = $image['tmp_name'];
-
-    $filename_separate = explode('.', $imagefilename);
-    $file_extension = strtolower(end($filename_separate));
-
-    $allowed_extensions = array('jpeg,', 'jpg', 'png');
 
     try {
-        if (in_array($file_extension, $allowed_extensions)) {
-            // If the image already exist
-            $upload_image = '../image_upload/' . $imagefilename;
+        // Prepare the SQL statement to update the data
+        $sql = "UPDATE dogeproducts SET brand = :brand, flavor = :flavor, price = :price, category = :category WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
 
-            if ($upload_image > 2000000) {
-                // $message[] = 'Woof! The image is too big';
-                $dogeimage = 1;
-            } else {
-                // Product and Image will be uploaded to database
-                move_uploaded_file($imagefiletemp, $upload_image);
+        // Bind parameters to the SQL statement
+        $stmt->bindParam(':brand', $brand);
+        $stmt->bindParam(':flavor', $flavor);
+        $stmt->bindParam(':price', $price);
+        $stmt->bindParam(':category', $category);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
-                // Prepare the SQL statement to update the data 
-                $sql = "UPDATE dogeproducts SET brand = :brand, flavor = :flavor, price = :price, category = :category WHERE id = :id";
-                $stmt = $pdo->prepare($sql);
-
-                // Bind parameters to the SQL statement
-                $stmt->bindParam(':brand', $brand);
-                $stmt->bindParam(':flavor', $flavor);
-                $stmt->bindParam(':price', $price);
-                $stmt->bindParam(':brand', $category);
-                $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-
-                // Execute the update query
-                $stmt->execute();
-            }
-        }
+        // Execute the update query
+        $stmt->execute();
     } catch (PDOException $e) {
         die("Error: " . $e->getMessage());
     }
 }
+
 ?>
 
 <!DOCTYPE html>
