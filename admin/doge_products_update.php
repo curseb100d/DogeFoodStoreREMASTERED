@@ -45,6 +45,7 @@ if (isset($_POST['submit'])) {
 
         // Execute the update query
         $stmt->execute();
+        
     } catch (PDOException $e) {
         die("Error: " . $e->getMessage());
     }
@@ -92,7 +93,7 @@ if (isset($_POST['submit'])) {
                     <option value="Dog Food" <?php echo ($category === 'Dog Food') ? 'selected' : ''; ?>>Dog Food</option>
                     <option value="Dog Accessory" <?php echo ($category === 'Dog Accessory') ? 'selected' : ''; ?>>Dog Accessory</option>
                 </select>
-                <input type="file" name="file" required>
+                <input type="file" name="file">
                 <input type="submit" name="submit">
             </form>
         </div>
