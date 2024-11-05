@@ -24,7 +24,7 @@
     <?php include 'includes/client_dogetopnavigation.php'; ?>
 
     <!-- Slideshow -->
-    <div class="slideshow-container">
+    <!-- <div class="slideshow-container">
         <div class="mySlides fade">
             <img src="images/doge.jpg" style="width:100%">
         </div>
@@ -45,8 +45,13 @@
             <span class="dot" onclick="currentSlide(2)"></span>
             <span class="dot" onclick="currentSlide(3)"></span>
         </div>
-    </div>
+    </div> -->
 
+    <!-- Cut Out Text -->
+    <div class="image-container">
+        <div class="text">WELCOME TO</div>
+        <div class="text">DOGE DOG FOOD STORE</div>
+    </div>
 
     <!-- Link to JavaScript -->
     <script src="script.js"></script>
