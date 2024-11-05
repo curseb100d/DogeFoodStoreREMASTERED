@@ -1,8 +1,8 @@
 <?php
-session_start();
-if(!isset($_SESSION['username'])){
-    header('location: doge_userlogin.php');
-}
+// session_start();
+// if(!isset($_SESSION['username'])){
+//     header('location: doge_userlogin.php');
+// }
 ?>
 
 <!DOCTYPE html>

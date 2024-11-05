@@ -3,10 +3,10 @@
 session_start();
 
 // Check if the user is already logged in that will redirect to home page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: index.php");
-    exit;
-}
+// if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+//     header("location: ../index.php");
+//     exit;
+// }
 ?>
 
 <!-- Sign in that will GET from database -->
@@ -15,28 +15,59 @@ $success = 0;
 $deny = 0;
 
 // If server connects properly
+// if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+//     include '../doge_config.php';
+//     $username = $_POST['username'];
+//     $password = $_POST['password'];
+
+//     // Use a prepared statement to prevent SQL injection
+//     $sql = "SELECT * FROM dogeuser WHERE username = :username AND password = :password";
+//     $stmt = $pdo->prepare($sql);
+//     $stmt->execute([
+//         ':username' => $username,
+//         ':password' => $password
+//     ]);
+
+//     // Check if the user exists in the database
+//     if ($stmt->rowCount() > 0) {
+//         $success = 1;
+//         session_start();
+//         $_SESSION['loggedin'] = true;
+//         $_SESSION['username'] = $username;
+//         header('location: ../index.php');
+//     } else {
+//         $deny = 1;
+//     }
+// }
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    include 'doge_config.php';
+    include '../doge_config.php';
     $username = $_POST['username'];
     $password = $_POST['password'];
 
     // Use a prepared statement to prevent SQL injection
-    $sql = "SELECT * FROM `users` WHERE username = :username AND password = :password";
+    $sql = "SELECT * FROM dogeuser WHERE username = :username";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([
-        ':username' => $username,
-        ':password' => $password
-    ]);
+    $stmt->execute([':username' => $username]);
 
     // Check if the user exists in the database
     if ($stmt->rowCount() > 0) {
-        $success = 1;
-        session_start();
-        $_SESSION['loggedin'] = true;
-        $_SESSION['username'] = $username;
-        header('location:home.php');
+        // Fetch the user record
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // Verify the password using password_verify
+        if (password_verify($password, $user['password'])) {
+            $success = 1;
+            session_start();
+            $_SESSION['loggedin'] = true;
+            $_SESSION['username'] = $username;
+            header('location: ../index.php');
+            exit;
+        } else {
+            $deny = 1; // Password is incorrect
+        }
     } else {
-        $deny = 1;
+        $deny = 1; // Username is incorrect
     }
 }
 ?>
