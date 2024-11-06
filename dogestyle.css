@@ -171,7 +171,7 @@ body {
 .image-container {
     background-image: url(images/doge.jpg);
     background-size: cover;
-    position: relative;
+    position:fixed;
     height: 50%;
 }
 

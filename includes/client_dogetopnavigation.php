@@ -6,6 +6,8 @@
             <a href="#home" class="active">Home</a>
             <a href="#about">About</a>
             <a href="#services">Services</a>
+            <a href="#menu">Menu</a>
+            <a href="#orders">Orders</a>
         </div>
 
         <!-- Centered Search -->

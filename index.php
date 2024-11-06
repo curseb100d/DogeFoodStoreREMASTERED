@@ -48,10 +48,10 @@
     </div> -->
 
     <!-- Cut Out Text -->
-    <div class="image-container">
+    <!-- <div class="image-container">
         <div class="text">WELCOME TO</div>
         <div class="text">DOGE DOG FOOD STORE</div>
-    </div>
+    </div> -->
 
     <!-- Link to JavaScript -->
     <script src="script.js"></script>
