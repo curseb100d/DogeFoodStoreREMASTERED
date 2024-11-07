@@ -3,7 +3,17 @@
 include '../doge_config.php';
 session_start();
 
-include '../client/doge_addtocart.php';
+if(isset($_POST['addtocart'])){
+
+    $pid = $_POST["pid"];
+    $brand = $_POST["brand"];
+    $flavor = $_POST["flavor"];
+    $price = $_POST["price"];
+    $image = $_POST["image"];
+    $qty = $_POST["qty"];
+
+    $check_cart_numbers = $pdo->prepare("SELECT * FROM ")
+}
 
 ?>
 
