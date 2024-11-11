@@ -12,7 +12,16 @@ if(isset($_POST['addtocart'])){
     $image = $_POST["image"];
     $qty = $_POST["qty"];
 
-    $check_cart_numbers = $pdo->prepare("SELECT * FROM ")
+    $check_cart_numbers = $pdo->prepare("SELECT * FROM dogecart WHERE brand = ? AND dogeuser_id = ?");
+    $check_cart_numbers->execute([$brand, $dogeuser_id]);
+
+    if($check_cart_numbers->rowCount() > 0){
+        $message[] = 'Already added to cart';
+    } else {
+        $insert_cart = $pdo->prepare("INSERT INTO dogecart(dogeuser_id, pid, brand, flavor, price, image, quantity) VALUES(?,?,?,?,?,?,?)");
+        $insert_cart->execute([$dogeuser_id, $pid, $brand, $flavor, $price, $image, $qty]);
+        $message[] = 'Added to Cart!';
+    }
 }
 
 ?>
@@ -39,13 +48,13 @@ if(isset($_POST['addtocart'])){
                 while ($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)) {
             ?>
                     <form action="" method="POST" class="box">
-                        <input type="hidden" name="pid" value="<?= $fetch_products['dogeproducts_id']; ?>">
+                        <input type="hidden" name="pid" value="<?= $fetch_products['id']; ?>">
                         <input type="hidden" name="brand" value="<?= $fetch_products['brand']; ?>">
                         <input type="hidden" name="flavor" value="<?= $fetch_products['flavor']; ?>">
                         <input type="hidden" name="price" value="<?= $fetch_products['price']; ?>">
                         <input type="hidden" name="image" value="<?= $fetch_products['image']; ?>">
                         <button type="submit" class="shopping-cart" name="addtocart">Submit</button>
-                        <img src="image_upload/<?= $fetch_products['image']; ?>" alt="">
+                        <img src="../image_upload/<?= $fetch_products['image']; ?>" style="width: 100px;" alt="">
                         <a href="category.php?category=<?= $fetch_products['category']; ?>" class="cat"><?= $fetch_products['category']; ?></a>
                         <div class="name"><?= $fetch_products['brand']; ?></div>
                         <div class="flex">
