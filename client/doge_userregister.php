@@ -1,3 +1,15 @@
+<?php
+
+session_start();
+
+if(isset($_SESSION['dogeuser_id'])){
+    $dogeuser_id = $_SESSION['dogeuser_id'];
+ }else{
+    $dogeuser_id = '';
+ };
+
+?>
+
 <!-- Register that will POST to database -->
 <?php
 $success = 0;

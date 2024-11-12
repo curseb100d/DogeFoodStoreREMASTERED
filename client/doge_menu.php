@@ -1,26 +1,38 @@
 <?php
 
 include '../doge_config.php';
+
 session_start();
+
+if(isset($_SESSION['dogeuser_id'])){
+    $dogeuser_id = $_SESSION['dogeuser_id'];
+}else{
+    $dogeuser_id = '';
+};
 
 if(isset($_POST['addtocart'])){
 
-    $pid = $_POST["pid"];
-    $brand = $_POST["brand"];
-    $flavor = $_POST["flavor"];
-    $price = $_POST["price"];
-    $image = $_POST["image"];
-    $qty = $_POST["qty"];
+    if($dogeuser_id == ''){
+        header('location: ../client/doge_userlogin.php');
+    }else{
 
-    $check_cart_numbers = $pdo->prepare("SELECT * FROM dogecart WHERE brand = ? AND dogeuser_id = ?");
-    $check_cart_numbers->execute([$brand, $dogeuser_id]);
-
-    if($check_cart_numbers->rowCount() > 0){
-        $message[] = 'Already added to cart';
-    } else {
-        $insert_cart = $pdo->prepare("INSERT INTO dogecart(dogeuser_id, pid, brand, flavor, price, image, quantity) VALUES(?,?,?,?,?,?,?)");
-        $insert_cart->execute([$dogeuser_id, $pid, $brand, $flavor, $price, $image, $qty]);
-        $message[] = 'Added to Cart!';
+        $pid = $_POST["pid"];
+        $brand = $_POST["brand"];
+        $flavor = $_POST["flavor"];
+        $price = $_POST["price"];
+        $image = $_POST["image"];
+        $qty = $_POST["qty"];
+    
+        $check_cart_numbers = $pdo->prepare("SELECT * FROM dogecart WHERE brand = ? AND dogeuser_id = ?");
+        $check_cart_numbers->execute([$brand, $dogeuser_id]);
+    
+        if($check_cart_numbers->rowCount() > 0){
+            $message[] = 'Already added to cart';
+        } else {
+            $insert_cart = $pdo->prepare("INSERT INTO dogecart(dogeuser_id, pid, brand, flavor, price, image, quantity) VALUES(?,?,?,?,?,?,?)");
+            $insert_cart->execute([$dogeuser_id, $pid, $brand, $flavor, $price, $image, $qty]);
+            $message[] = 'Added to Cart!';
+        }
     }
 }
 
