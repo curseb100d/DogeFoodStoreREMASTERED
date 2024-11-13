@@ -19,16 +19,15 @@ $invalid = 0;
 // if server connects properly
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     include '../doge_config.php';
-    $firstname = $_POST['firstname'];
-    $lastname = $_POST['lastname'];
+    $name = $_POST['name'];
     $username = $_POST['username'];
     $email = $_POST['email'];
-    $mobile = $_POST['mobile'];
+    $number = $_POST['number'];
     $password = $_POST['password'];
     $confirmpassword = $_POST['confirmpassword'];
 
     // Check if user already exists
-    $sql = "SELECT * FROM dogeuser WHERE email = :email";
+    $sql = "SELECT * FROM dogeusers WHERE email = :email";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':email' => $email]);
 
@@ -38,7 +37,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     } else {
         if($password === $confirmpassword){
             // Insert the new user into the database
-            $sql = "INSERT INTO dogeuser (firstname, lastname, username, email, mobile, password) VALUES (:firstname, :lastname, :username, :email, :mobile, :password)";
+            $sql = "INSERT INTO dogeusers (name, username, email, number, password) VALUES (:name, :username, :email, :number, :password)";
             $stmt = $pdo->prepare($sql);
             
             // Hash the password before storing it for security
@@ -48,11 +47,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             // $stmt->bindParam(':password', $hashedPassword);
             
             $result = $stmt->execute([
-                ':firstname' => $firstname,
-                ':lastname' => $lastname,
+                ':name' => $name,
                 ':username' => $username,
                 ':email' => $email,
-                ':mobile' => $mobile,
+                ':number' => $number,
                 // change the $password to $hashedPassword
                 ':password' => $hashedPassword
             ]);
@@ -85,11 +83,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             <h1>Sign Up</h1>
             <p>Please fill out this form to create an account.</P>
 
-            <label><b>First Name</b></label>
-            <input type="text" name="firstname" required>
-
-            <label><b>Last Name</b></label>
-            <input type="text" name="lastname" required>
+            <label><b>Name</b></label>
+            <input type="text" name="name" required>
 
             <label><b>Username</b></label>
             <input type="text" name="username" required>
@@ -97,8 +92,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             <label><b>Email</b></label>
             <input type="text" name="email" required>
 
-            <label><b>Mobile</b></label>
-            <input type="text" name="mobile" required>
+            <label><b>Number</b></label>
+            <input type="text" name="number" required>
 
             <label><b>Password</b></label>
             <input type="password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>

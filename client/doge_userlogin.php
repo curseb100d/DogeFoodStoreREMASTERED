@@ -2,17 +2,17 @@
 // Initialize the session
 session_start();
 
-if(isset($_SESSION['dogeuser_id'])){
-    $dogeuser_id = $_SESSION['user_id'];
-}else{
-    $dogeuser_id = '';
-};
+// if(isset($_SESSION['dogeuser_id'])){
+//     $dogeuser_id = $_SESSION['dogeuser_id'];
+// }else{
+//     $dogeuser_id = '';
+// };
 
 // Check if the user is already logged in that will redirect to home page
-// if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-//     header("location: ../client/doge_menu.php");
-//     exit;
-// }
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    header("location: ../index.php");
+    exit;
+}
 ?>
 
 <!-- Sign in that will GET from database -->
@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
 
     // Use a prepared statement to prevent SQL injection
-    $sql = "SELECT * FROM dogeuser WHERE username = :username";
+    $sql = "SELECT * FROM dogeusers WHERE username = :username";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':username' => $username]);
 
@@ -128,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
 
         <div class="container signup">
-            <p>Don't have an account? <a href="signup.php">Sign Up</a>.</p>
+            <p>Don't have an account? <a href="doge_userregister.php">Sign Up</a>.</p>
         </div>
     </form>
 </body>

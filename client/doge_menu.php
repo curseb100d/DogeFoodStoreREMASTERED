@@ -17,8 +17,8 @@ if(isset($_SESSION['dogeuser_id'])){
 
 if(isset($_POST['addtocart'])){
 
-    if($dogeuser_id == ''){
-        header('location: ../client/doge_userlogin.php');
+    if(!isset($_SESSION['username'])){
+        header('location: doge_userlogin.php');
     }else{
 
         $pid = $_POST["pid"];

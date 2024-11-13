@@ -1,7 +1,6 @@
-CREATE TABLE dogeadmin
-(
-	id integer SERIAL PRIMARY KEY,
-	username varchar(255) NOT NULL,
-	password varchar(255) NOT NULL,
-	admindogecreated_at timestamptz DEFAULT current_timestamp
+CREATE TABLE dogeadmin (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(20) NOT NULL,
+  password VARCHAR(50) NOT NULL,
+  dogeadmincreated_at timestamptz DEFAULT current_timestamp
 );
