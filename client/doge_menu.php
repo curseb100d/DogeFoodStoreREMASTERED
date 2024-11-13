@@ -10,6 +10,11 @@ if(isset($_SESSION['dogeuser_id'])){
     $dogeuser_id = '';
 };
 
+// if(!isset($_SESSION['username'])){
+//     header('location: doge_userlogin.php');
+// }
+
+
 if(isset($_POST['addtocart'])){
 
     if($dogeuser_id == ''){
@@ -51,6 +56,10 @@ if(isset($_POST['addtocart'])){
 </head>
 
 <body>
+
+    <!-- Doge Top Navigation -->
+    <?php include '../includes/client_dogetopnavigation.php'; ?>
+
     <div class="products">
         <div class="box-container">
             <?php

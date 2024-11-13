@@ -1,6 +1,6 @@
 CREATE TABLE dogeuser
 (
-    dogeuser_id SERIAL PRIMARY KEY,
+    	id integer SERIAL PRIMARY KEY,
     	firstname varchar(255) NOT NULL,
 	lastname varchar(255) NOT NULL,
 	username varchar(255) NOT NULL,

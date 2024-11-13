@@ -10,7 +10,7 @@ if(isset($_SESSION['dogeuser_id'])){
 
 // Check if the user is already logged in that will redirect to home page
 // if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-//     header("location: ../index.php");
+//     header("location: ../client/doge_menu.php");
 //     exit;
 // }
 ?>
