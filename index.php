@@ -1,14 +1,14 @@
 <?php
 session_start();
 // if(!isset($_SESSION['username'])){
-//     header('location: doge_userlogin.php');
+//     header('location: ./client/doge_userlogin.php');
 // }
 
-if(isset($_SESSION['dogeuser_id'])){
+if (isset($_SESSION['dogeuser_id'])) {
     $dogeuser_id = $_SESSION['dogeuser_id'];
- }else{
+} else {
     $dogeuser_id = '';
- };
+};
 ?>
 
 <!DOCTYPE html>

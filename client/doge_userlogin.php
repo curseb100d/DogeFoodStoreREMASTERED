@@ -2,17 +2,17 @@
 // Initialize the session
 session_start();
 
-// if(isset($_SESSION['dogeuser_id'])){
-//     $dogeuser_id = $_SESSION['dogeuser_id'];
-// }else{
-//     $dogeuser_id = '';
-// };
+if(isset($_SESSION['dogeuser_id'])){
+    $dogeuser_id = $_SESSION['dogeuser_id'];
+}else{
+    $dogeuser_id = '';
+};
 
 // Check if the user is already logged in that will redirect to home page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: ../index.php");
-    exit;
-}
+// if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+//     header("location: ../index.php");
+//     exit;
+// }
 ?>
 
 <!-- Sign in that will GET from database -->
@@ -67,6 +67,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             session_start();
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $username;
+            $_SESSION['dogeuser_id'] = $user['id']; // Store user ID in session
+
+            // Redirect to home page
             header('location: ../index.php');
             exit;
         } else {

@@ -1,5 +1,7 @@
 <?php
 
+include '../doge_config.php';
+
 session_start();
 
 if (isset($_SESSION['dogeuser_id'])) {

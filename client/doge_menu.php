@@ -14,11 +14,10 @@ if(isset($_SESSION['dogeuser_id'])){
 //     header('location: doge_userlogin.php');
 // }
 
-
 if(isset($_POST['addtocart'])){
 
-    if(!isset($_SESSION['username'])){
-        header('location: doge_userlogin.php');
+    if($dogeuser_id == ''){
+        header('location:login.php');
     }else{
 
         $pid = $_POST["pid"];

@@ -7,7 +7,7 @@
             <a href="#about">About</a>
             <a href="#services">Services</a>
             <a href="./client/doge_menu.php">Menu</a>
-            <a href="#orders">Orders</a>
+            <a href="../client/doge_orders.php">Orders</a>
         </div>
 
         <!-- Centered Search -->
@@ -22,5 +22,13 @@
         <div class="topnav-right">
             <a href="../client/doge_userlogin.php">Login</a>
             <button type="submit"><i class="fa fa-shopping-cart"></i></button>
+
+            <?php
+            $select_profile = $pdo->prepare("SELECT * FROM dogeusers WHERE id = ?");
+            $select_profile->execute([$dogeuser_id]);
+            if ($select_profile->rowCount() > 0) {
+                $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
+            }
+            ?>
         </div>
     </div>

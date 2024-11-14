@@ -56,8 +56,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             ]);
             
             if($result){
-                $success = 1;
-                // header('location:signin.php');
+                // Retrieve the newly created user ID
+                $dogeuser_id = $pdo->lastInsertId();
+
+                // Set session dogeuser_id and redirect to index.php
+                $_SESSION['dogeuser_id'] = $dogeuser_id;
+                header('location: ../client/doge_userlogin.php');
+                exit; // Ensure no further code is executed after redirection
+            } else {
+                $success = 0; // Insert failed
             }
         } else {
             // die("Error inserting data.");
