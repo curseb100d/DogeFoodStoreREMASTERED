@@ -59,6 +59,12 @@ if (isset($_SESSION['dogeuser_id'])) {
         <div class="text">DOGE DOG FOOD STORE</div>
     </div> -->
 
+    <header id="pageHeader">Header</header>
+    <article id="mainArticle">Article</article>
+    <nav id="mainNav">Nav</nav>
+    <div id="siteAds">Ads</div>
+    <footer id="pageFooter">Footer</footer>
+
     <!-- Link to JavaScript -->
     <script src="script.js"></script>
 </body>
