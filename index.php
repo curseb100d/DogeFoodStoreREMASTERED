@@ -9,6 +9,8 @@ if (isset($_SESSION['dogeuser_id'])) {
 } else {
     $dogeuser_id = '';
 };
+
+include 'doge_config.php';
 ?>
 
 <!DOCTYPE html>
@@ -59,11 +61,21 @@ if (isset($_SESSION['dogeuser_id'])) {
         <div class="text">DOGE DOG FOOD STORE</div>
     </div> -->
 
-    <header id="pageHeader">Header</header>
-    <article id="mainArticle">Article</article>
-    <nav id="mainNav">Nav</nav>
-    <div id="siteAds">Ads</div>
-    <footer id="pageFooter">Footer</footer>
+    <header class="home">
+        <div class="home-text">
+            <h1>Welcome to <br> <span>Doge Dog Food Store<span><br></h1>
+            <h3>Where we feed your dogs with our quality dog food</h3>
+            <p>Cause cheems is hungry</p>
+        </div>
+
+        <div class="home-img">
+            <img src="images/Cheems_Art.webp">
+        </div>
+    </header>
+
+    <article class="article">Article</article>
+    
+    <footer class="footer">Footer</footer>
 
     <!-- Link to JavaScript -->
     <script src="script.js"></script>

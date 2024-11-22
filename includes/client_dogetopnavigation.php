@@ -1,6 +1,5 @@
     <!-- Top Navigation -->
-    <div class="topnav">
-
+    <nav class="topnav">
         <div>
             <img src="./images/dogecoin11transparent.png">
             <a href="#home" class="active">Home</a>
@@ -24,11 +23,11 @@
             <button type="submit"><i class="fa fa-shopping-cart"></i></button>
 
             <?php
-            $select_profile = $pdo->prepare("SELECT * FROM dogeusers WHERE id = ?");
-            $select_profile->execute([$dogeuser_id]);
-            if ($select_profile->rowCount() > 0) {
-                $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
-            }
+            // $select_profile = $pdo->prepare("SELECT * FROM dogeusers WHERE id = ?");
+            // $select_profile->execute([$dogeuser_id]);
+            // if ($select_profile->rowCount() > 0) {
+            //     $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
+            // }
             ?>
         </div>
-    </div>
+    </nav>
