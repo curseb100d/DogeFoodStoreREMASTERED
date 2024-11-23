@@ -31,37 +31,8 @@ include 'doge_config.php';
     <!-- Doge Top Navigation -->
     <?php include 'includes/client_dogetopnavigation.php'; ?>
 
-    <!-- Slideshow -->
-    <!-- <div class="slideshow-container">
-        <div class="mySlides fade">
-            <img src="images/doge.jpg" style="width:100%">
-        </div>
-
-        <div class="mySlides fade">
-            <img src="images/cheems.jpg" style="width:100%">
-        </div>
-
-        <div class="mySlides fade">
-            <img src="" style="width:100%">
-        </div>
-
-        <a class="prev" onclick="plusSlides(-1)">❮</a>
-        <a class="next" onclick="plusSlides(1)">❯</a>
-
-        <div style="text-align: center;">
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
-        </div>
-    </div> -->
-
-    <!-- Cut Out Text -->
-    <!-- <div class="image-container">
-        <div class="text">WELCOME TO</div>
-        <div class="text">DOGE DOG FOOD STORE</div>
-    </div> -->
-
-    <header class="home">
+    <!-- Home -->
+    <section class="home">
         <div class="home-text">
             <h1>Welcome to <br> <span>Doge Dog Food Store<span><br></h1>
             <h3>Where we feed your dogs with our quality dog food</h3>
@@ -69,12 +40,12 @@ include 'doge_config.php';
         </div>
 
         <div class="home-img">
-            <img src="images/Cheems_Art.webp">
+            <img src="images/Cheems_Art.gif">
         </div>
-    </header>
+    </section>
 
     <article class="article">Article</article>
-    
+
     <footer class="footer">Footer</footer>
 
     <!-- Link to JavaScript -->
