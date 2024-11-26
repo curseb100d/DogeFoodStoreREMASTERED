@@ -44,6 +44,86 @@ include 'doge_config.php';
         </div>
     </section>
 
+    <!-- About -->
+    <section class="about">
+        <div class="about-img">
+            <img src="images/pngimg.com - doge_meme_PNG12.png">
+        </div>
+
+        <div class="about-text">
+            <h1>All About Doge, <span>Wooow!</span></h1>
+            <p>This business was inspired from the meme called <span>"Doge"</span> which
+                encourage me to open this business to serve for the dogs and owners in our
+                area who where in need to feed their dogs</p>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="products" id="products">
+        <div class="middle-text">
+            <h4>Doge Products</h4>
+            <h2>Latest Doge Foods</h2>
+        </div>
+
+        <div class="products-content">
+            <div class="row">
+                <img src="images/pngimg.com - doge_meme_PNG12.png">
+                <h3>Pedigree</h3>
+                <div class="in-text">
+                    <div class="price">
+                        <h6>P10</h6>
+                    </div>
+                    <div class="s-btnn">
+                        <a href="#">Order now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <img src="images/pngimg.com - doge_meme_PNG12.png">
+                <h3>Pedigree</h3>
+                <div class="in-text">
+                    <div class="price">
+                        <h6>P10</h6>
+                    </div>
+                    <div class="s-btnn">
+                        <a href="#">Order now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <img src="images/pngimg.com - doge_meme_PNG12.png">
+                <h3>Pedigree</h3>
+                <div class="in-text">
+                    <div class="price">
+                        <h6>P10</h6>
+                    </div>
+                    <div class="s-btnn">
+                        <a href="#">Order now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <img src="images/pngimg.com - doge_meme_PNG12.png">
+                <h3>Pedigree</h3>
+                <div class="in-text">
+                    <div class="price">
+                        <h6>P10</h6>
+                    </div>
+                    <div class="s-btnn">
+                        <a href="#">Order now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row-btn">
+            <a href="#" class="btn">Explore More</a>
+        </div>
+    </section>
+
     <article class="article">Article</article>
 
     <footer class="footer">Footer</footer>
