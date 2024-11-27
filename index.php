@@ -20,6 +20,8 @@ include 'doge_config.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Box Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <!-- Cloudflare -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Link to CSS -->
@@ -124,9 +126,20 @@ include 'doge_config.php';
         </div>
     </section>
 
-    <article class="article">Article</article>
+    <!-- Contact Us -->
+    <section class="contact">
+        <div class="contact-text">
+            <h2>Contact Us</h2>
+            <div class="social">
+                <a href="#"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="clr"><i class="bx bxl-instagram-alt"></i></a>
+            </div>
+        </div>
 
-    <footer class="footer">Footer</footer>
+        <footer class="footer">
+            <div class="footer-message">Copyright &copy; 2024 - Doge Dog Food Store Information System</div>
+        </footer>
+    </section>
 
     <!-- Link to JavaScript -->
     <script src="script.js"></script>
