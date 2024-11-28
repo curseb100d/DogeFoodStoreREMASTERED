@@ -133,7 +133,7 @@ section {
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     gap: 2rem;
-    background-image: url("images/layered-waves-haikei.svg");
+    background-image: url("../images/layered-waves-haikei.svg");
     background-size: 100%;
     background-repeat: no-repeat;
 }
@@ -180,7 +180,7 @@ section {
     grid-template-columns: repeat(2, 1fr);
     align-items: left;
     gap: 4rem;
-    background-image: url("images/layered-waves-haikei1.svg");
+    background-image: url("../images/layered-waves-haikei1.svg");
     background-size: 100%;
     background-repeat: no-repeat;
 }
@@ -238,6 +238,7 @@ section {
     height: auto;
     transition: transform .50s ease;
     cursor: pointer;
+    align-items: center;
 }
 
 .row h3 {
@@ -246,19 +247,45 @@ section {
     font-weight: 700;
 }
 
-.in-text {
+.in-text1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.in-text .price h6 {
-    font-size: 17px;
-    font-weight: 600;
+.in-text2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.in-text .s-btnn a {
+.in-text2 .price h6 {
+    font-size: 17px;
+    font-weight: 600;
+
+}
+
+.in-text2 .s-btnn input {
     display: inline-block;
+    padding: 10px;
+    margin-bottom: 1rem;
+    background: #faedcd;
+    color: #bc6c25;
+    font-size: 14px;
+    letter-spacing: 1px;
+    border-radius: 3rem;
+    border: none;
+    transition: all .50s ease;
+    width: 60px;
+}
+
+.in-text2 .s-btnn button:hover {
+    background: #faedcd;
+    color: #bc6c25;
+    box-shadow: blue 0px 1px 25px;
+}
+
+.in-button3 .s-btnn button{
     padding: 9px 23px;
     background: #faedcd;
     color: #bc6c25;
@@ -266,10 +293,12 @@ section {
     font-weight: 500;
     letter-spacing: 1px;
     border-radius: 3rem;
+    border: none;
     transition: all .50s ease;
+    width: 100%;
 }
 
-.in-text .s-btnn a:hover {
+.in-button3 .s-btnn button:hover {
     background: #faedcd;
     color: #bc6c25;
     box-shadow: blue 0px 1px 25px;
@@ -333,7 +362,7 @@ section {
 }
 
 .contact {
-    background-image: url("images/layered-peaks-haikei.svg");
+    background-image: url("../images/layered-peaks-haikei.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;

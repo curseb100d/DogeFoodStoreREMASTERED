@@ -1,7 +1,7 @@
 <!-- Top Navigation -->
 <header class="topnav">
     <nav>
-        <img src="./images/dogecoin11transparent.png">
+        <img src="../images/dogecoin11transparent.png">
 
         <ul>
             <li><a href="#home" class="active">Home</a></li>

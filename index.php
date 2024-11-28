@@ -1,4 +1,7 @@
 <?php
+
+include 'doge_config.php';
+
 session_start();
 // if(!isset($_SESSION['username'])){
 //     header('location: ./client/doge_userlogin.php');
@@ -9,8 +12,6 @@ if (isset($_SESSION['dogeuser_id'])) {
 } else {
     $dogeuser_id = '';
 };
-
-include 'doge_config.php';
 ?>
 
 <!DOCTYPE html>
@@ -25,13 +26,48 @@ include 'doge_config.php';
     <!-- Cloudflare -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Link to CSS -->
-    <link rel="stylesheet" href="dogestyle.css">
+    <link rel="stylesheet" href="./css/dogestyle.css">
     <title>Doge Dog Store</title>
 </head>
 
 <body>
+
     <!-- Doge Top Navigation -->
-    <?php include 'includes/client_dogetopnavigation.php'; ?>
+    <header class="topnav">
+        <nav>
+            <img src="./images/dogecoin11transparent.png">
+
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="./client/doge_menu.php">Menu</a></li>
+                <li><a href="../client/doge_orders.php">Orders</a></li>
+            </ul>
+        </nav>
+
+        <!-- Centered Search -->
+        <nav class="search-container">
+            <form action="">
+                <input type="text" placeholder="Search Doge Dog Food" name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </nav>
+
+        <!-- Right Aligned Links -->
+        <nav class="topnav-right">
+            <a href="../client/doge_userlogin.php">Login</a>
+            <button type="submit"><i class="fa fa-shopping-cart"></i></button>
+
+            <?php
+            // $select_profile = $pdo->prepare("SELECT * FROM dogeusers WHERE id = ?");
+            // $select_profile->execute([$dogeuser_id]);
+            // if ($select_profile->rowCount() > 0) {
+            //     $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
+            // }
+            ?>
+        </nav>
+    </header>
 
     <!-- Home -->
     <section class="home">
@@ -143,6 +179,7 @@ include 'doge_config.php';
 
     <!-- Link to JavaScript -->
     <script src="script.js"></script>
+
 </body>
 
 </html>
